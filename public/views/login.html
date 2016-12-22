@@ -15,7 +15,7 @@
 
                 <!--<form id="loginform" class="form-horizontal" role="form">-->
 
-                <div class="alert alert-danger" ng-show="showLoginError">
+                <div class="alert alert-danger" ng-show="loginError">
                     {{loginErrorMsg}}
                 </div>
 
@@ -35,7 +35,7 @@
                 <div style="margin-top:10px" class="form-group">
                     <!-- Button -->
                     <div class="col-sm-12 controls">
-                        <a id="btn-login" href="#" class="btn btn-success" ng-click="login(false)">Login</a>
+                        <a id="btn-login" href="#" class="btn btn-success" ng-click="login()">Login</a>
                         <a id="btn-signup" href="#" class="btn btn-success" data-toggle="modal" data-target="#myModal">New
                             User?Sign Up</a>
                     </div>

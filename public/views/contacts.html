@@ -2,15 +2,109 @@
     <div class="text-center">
         <!--<a ng-click="logout()"><h2 style="text-align: center">Logout As Vikash</h2></a>
         <a><h2 style="text-align: center">Add contact</h2></a>-->
-        <a class="text-capitalize btn btn-info" ng-click="logout()">Logout as {{currentUser}}</a>
+        <a class="btn btn-info btn-lg embed-responsives" ng-click="logout()">Logout as {{currentUser}}</a>
+        <br/><br/>
+        <div style="margin-bottom: 25px">
+
+            <button class="btn-primary btn-lg" data-toggle="modal" data-target="#myModal"><i
+                    class="glyphicon glyphicon-plus-sign"></i> Add Contact
+            </button>
+        </div>
 
     </div>
 
     <div class="jumbotron">
         <div style="margin-bottom: 25px" class="input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-            <input id="login-username" type="text" class="form-control input-lg" ng-model="email" value=""
-                   placeholder="Enter your email id">
+            <input id="login-username" type="text" class="form-control input-lg" ng-model="queryString" value=""
+                   placeholder="Enter your query to serch contacts">
+        </div>
+        <div class="text-center">
+            <table class="table table-striped" ng-show="queryString">
+                <thead>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Email</th>
+                    <th class="text-center">Contact Number</th>
+                    <th class="text-center">Added By</th>
+                </thead>
+                <tbody>
+                <tr ng-repeat="contact in contacts | filter:queryString">
+                    <td>
+                        {{contact.name}}
+                    </td>
+                    <td>
+                        {{contact.email}}
+                    </td>
+                    <td>
+                        {{contact.contactnumber}}
+                    </td>
+                    <td>
+                        {{contact.addedBy.name}}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">{{addContactHeader}}</h4>
+                </div>
+                <div class="text-center" ng-show="succesMsg">
+                    <div class="alert alert-success">
+                        {{succesMsg}}
+                    </div>
+                </div>
+                <div class="modal-body" ng-hide="succesMsg">
+                    <div>
+                        <div class="alert alert-danger" ng-show="addError">
+                            {{addErrorMsg}}
+                        </div>
+                        <div style="margin-bottom: 25px" class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input type="text" class="form-control" ng-model="name" value=""
+                                   placeholder="Enter person's name">
+                        </div>
+                        <div style="margin-bottom: 25px" class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                            <input type="text" class="form-control" ng-model="email" value=""
+                                   placeholder="Enter person's Email">
+                        </div>
+                        <script language=Javascript>
+                            <!--
+                            function isNumberKey(evt) {
+                                var charCode = (evt.which) ? evt.which : event.keyCode
+                                if (charCode > 31 && (charCode < 48 || charCode > 57))
+                                    return false;
+
+                                return true;
+                            }
+                            //-->
+                        </script>
+                        <div style="margin-bottom: 25px" class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+                            <input type="text" onkeypress="return isNumberKey(event)" class="form-control"
+                                   ng-model="number"
+                                   placeholder="Enter person's phone number">
+                        </div>
+                        <button class="btn btn-info" ng-click="addContact()">Add</button>
+                    </div>
+                </div>
+                <!--<div ng-show="welcome">
+                    <img src="/static/images/welcome.png" class="img-responsive text-center"
+                         style="padding-left: 125px">
+                </div>
+                -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
