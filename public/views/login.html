@@ -21,13 +21,13 @@
 
                 <div style="margin-bottom: 25px" class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input type="text" class="form-control" ng-model="email"
+                    <input id="loginEmail" type="text" class="form-control" ng-model="email"
                            placeholder="Enter your email id">
                 </div>
 
                 <div style="margin-bottom: 25px" class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                    <input type="password" class="form-control" ng-model="password"
+                    <input id ="loginPassword" type="password" class="form-control" ng-model="password"
                            placeholder="password">
                 </div>
 
@@ -62,34 +62,34 @@
                         </div>
                         <div style="margin-bottom: 25px" class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input type="text" class="form-control" ng-model="name" value=""
+                            <input id="signUpName" type="text" class="form-control" ng-model="name" value=""
                                    placeholder="Enter Your Name">
                         </div>
                         <div style="margin-bottom: 25px" class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                            <input type="text" class="form-control" ng-model="semail" value=""
+                            <input id="signUpEmail" type="text" class="form-control" ng-model="semail" value=""
                                    placeholder="Enter Your Email">
                         </div>
 
                         <div style="margin-bottom: 25px" class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input type="password" class="form-control" ng-model="spassword"
+                            <input id="signUpPassword" type="password" class="form-control" ng-model="spassword"
                                    placeholder="Enter Password">
                         </div>
                         <div style="margin-bottom: 25px" class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input type="password" class="form-control" ng-model="repassword"
+                            <input id="signUpRePassword" type="password" class="form-control" ng-model="repassword"
                                    placeholder="Re Enter Password">
                         </div>
-                        <button class="btn btn-info" ng-click="signUp()">Sign Up</button>
+                        <button id="signUpButton" class="btn btn-info" ng-click="signUp()">Sign Up</button>
                     </div>
                 </div>
                 <div ng-show="welcome">
-                    <img src="/static/images/welcome.png" class="img-responsive text-center"
+                    <img id="welcomImage" src="/static/images/welcome.png" class="img-responsive text-center"
                          style="padding-left: 125px">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button id="modalCloseButton" type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
             </div>
 
