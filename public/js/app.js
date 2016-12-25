@@ -172,9 +172,22 @@ app.controller('LoginController',['$scope','$location','$http','$cookies','$root
 }]);
 app.controller('ContactsContoller',['$scope','$location','$cookies','$rootScope','$http',function ($scope,$location,$cookies,$rootScope,$http) {
 
+    $scope.addContactHeader = "Fill in all details to add contact";
+    $scope.succesMsg = "";
+    $scope.reset = function () {
+        $scope.succesMsg = "";
+        $scope.addContactHeader = "Fill in all details to add contact";
+        $scope.name = "";
+        $scope.email = "";
+        $scope.number = "";
+    }
     $scope.contacts = null;
     loadContacts();
     function loadContacts(){
+        //$scope.succesMsg = "";
+        $scope.modalHeader = "Fill in all details to add contact";
+        $scope.addError = false;
+        $scope.addErrorMsg = "";
         $http.get('/contacts/receive').success(function (response) {
             console.log(response);
             $scope.contacts = response.reverse();
@@ -183,8 +196,7 @@ app.controller('ContactsContoller',['$scope','$location','$cookies','$rootScope'
     }
 
 
-    $scope.addContactHeader = "Fill in all details to add contact";
-    $scope.succesMsg = "";
+
     $scope.logout = function () {
         console.log("Log out");
         $cookies.remove('token');
@@ -227,8 +239,10 @@ app.controller('ContactsContoller',['$scope','$location','$cookies','$rootScope'
                     $http.post('/contacts/add',{name : $scope.name,number : $scope.number,email : $scope.email},{headers: {'authorization': $rootScope.token}}).success(function (response) {
                         console.log("Sending post request");
                         console.log(response);
-                        $scope.addContactHeader = "Succesfull!!!"
+                        $scope.addContactHeader = "Succesfull!!!";
                         $scope.succesMsg = "Contact Added";
+                        //$scope.addContactHeader = "Fill in all details to add contact";
+                        //$scope.succesMsg = "";
                         loadContacts();
                     });
                 }
